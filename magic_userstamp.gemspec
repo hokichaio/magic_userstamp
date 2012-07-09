@@ -20,4 +20,16 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
+  if s.respond_to? :specification_version then
+      current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+      s.specification_version = 3
+
+      if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+          s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
+      else
+          s.add_dependency(%q<rspec>, [">= 1.2.9"])
+      end
+  else
+      s.add_dependency(%q<rspec>, [">= 1.2.9"])
+  end
 end
