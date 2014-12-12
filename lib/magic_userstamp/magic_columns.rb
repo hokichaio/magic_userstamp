@@ -37,6 +37,7 @@ module MagicUserstamp
       def setup_userstamp(columns)
         config = MagicUserstamp.config
         columns.each do |column|
+          console.log column
           next if column.primary
           if pattern = config.pattern_for(self, column.name)
             stampable_on(*pattern.args_for_stampable_on(column.name))
